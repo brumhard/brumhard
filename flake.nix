@@ -10,15 +10,34 @@
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
+        overallPkgs = with pkgs;[
+          go
+          # vhs # wait for 0.2.0 to be released
+          cowsay
+        ];
+        shellHook = '''';
       in
-      {
+      rec{
+        packages = {
+          default = packages.local;
+          local = pkgs.buildEnv {
+            name = "dev-tools";
+            paths = with pkgs; overallPkgs ++ [
+              earthly
+            ];
+          };
+          ci = pkgs.buildEnv {
+            name = "dev-tools";
+            paths = with pkgs; overallPkgs ++ [
+              cowsay
+              # hack to share shellHook with container
+              (pkgs.writeScriptBin "setup-shell" shellHook)
+            ];
+          };
+        };
         devShell = pkgs.mkShell {
-          packages = with pkgs; [
-            vhs
-            go
-          ];
-
-          shellHook = "";
+          inherit shellHook;
+          packages = [ packages.local ];
         };
       }
     );
