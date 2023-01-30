@@ -11,9 +11,8 @@
       let
         pkgs = import nixpkgs { inherit system; };
         overallPkgs = with pkgs;[
-          go
           vhs
-          # cowsay
+          cowsay
         ];
         shellHook = '''';
       in
