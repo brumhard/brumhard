@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 cows=(
-    kitty
     dragon
-    moose
     stegosaurus
     turkey
     turtle
-    tux
+    # moose
+    # tux
 )
 
 selected_cow=${cows[$RANDOM % ${#cows[@]}]}
