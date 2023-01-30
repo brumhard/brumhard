@@ -18,7 +18,7 @@ hello:
     SAVE ARTIFACT hello.gif AS LOCAL hello.gif
 
 skyline:
-    RUN apt install -y curl
+    RUN apt update && apt install -y curl
     RUN echo $(( $(date +%Y)-1)) > last_year
     RUN curl -sSfLo skyline.svg "https://skylines.brumhard.com/brumhard/$(cat last_year)?type=svg"
     SAVE ARTIFACT skyline.svg AS LOCAL skyline.svg
