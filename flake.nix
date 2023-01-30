@@ -12,8 +12,8 @@
         pkgs = import nixpkgs { inherit system; };
         overallPkgs = with pkgs;[
           go
-          # vhs # wait for 0.2.0 to be released
-          cowsay
+          vhs
+          # cowsay
         ];
         shellHook = '''';
       in
