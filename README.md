@@ -2,9 +2,13 @@
 
 # Welcome
 
+Hi, I'm Tobias.
+
 ## Github Stats 🌃
 
-![skyline](./skyline.svg)
+<img src="skyline.svg" width="100%">
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=brumhard&hide=html)
-![mattn's github stats](https://github-readme-stats.vercel.app/api?username=brumhard&show_icons=true&count_private=true&line_height=40)
+<div style="display: flex; flex-direction: row;">
+ <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=brumhard&theme=transparent&layout=compact&hide_border=true" />
+ <img src="https://github-readme-stats.vercel.app/api?username=brumhard&show_icons=true&count_private=true&theme=transparent&include_all_commits=true&hide_border=true" />
+</div>
