@@ -1,4 +1,4 @@
-![hello.gif](./hello.gif)
+<img src="hello.gif" width="60%">
 
 # Welcome 🌊
 
