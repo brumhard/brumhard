@@ -3,15 +3,17 @@ VERSION 0.6
 FROM debian:stable-slim
 
 deps:
-    RUN apt update && apt install -y curl git cowsay
-    SAVE ARTIFACT /usr/games/cowsay
+    RUN apt update && apt install -y curl git
 
 hello:
     # using a patched vhs version to set no-sandbox go-rod option
     # could be replaced if https://github.com/charmbracelet/vhs/pull/195 is merged
     # maybe then also using the nix package works
     FROM ghcr.io/charmbracelet/vhs@sha256:018e10d9a61d7fe7e2fd76cfd3103211fc1a558d8c38d781bd2421fbe7230ac2
-    COPY +deps/cowsay /usr/local/bin
+    # TODO: add cache mount for apt cache
+    RUN apt update && \
+        apt install -y cowsay && \
+        mv /usr/games/cowsay /usr/local/bin
     # enable chromium no-sandbox
     ENV VHS_NO_SANDBOX="true"
     COPY greet-visitor.sh .
@@ -21,7 +23,6 @@ hello:
 
 skyline:
     FROM +deps
-    RUN apt update && apt install -y curl
     RUN echo $(( $(date +%Y)-1)) > last_year
     RUN curl -sSfLo skyline.svg "https://skylines.brumhard.com/brumhard/$(cat last_year)?type=svg"
     SAVE ARTIFACT skyline.svg AS LOCAL skyline.svg
