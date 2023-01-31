@@ -1,6 +1,6 @@
 ![hello.gif](./hello.gif)
 
-# Welcome
+# Welcome 🌊
 
 Hi, I'm Tobias.  
 I like Go, Kubernetes and automating stuff.  

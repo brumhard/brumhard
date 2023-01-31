@@ -10,12 +10,14 @@ Set Height 1500
 # https://github.com/charmbracelet/vhs/issues/88
 Set Framerate 20
 
-Type echo "starting welcome script..."
+Type "bash greet-visitor.sh"
 Sleep 500ms
-Enter
+Enter 2
 
-Type "./greet-visitor.sh"
-Sleep 500ms
-Enter
-
+Type Killing the cow now...
 Sleep 20s
+
+Backspace 22
+
+Type Here we go again
+Sleep 1s

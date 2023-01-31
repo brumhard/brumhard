@@ -11,7 +11,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
         overallPkgs = with pkgs;[
-          vhs
+          vhs # NOTE: currently not the right version
           cowsay
         ];
         shellHook = '''';
@@ -28,7 +28,6 @@
           ci = pkgs.buildEnv {
             name = "dev-tools";
             paths = with pkgs; overallPkgs ++ [
-              cowsay
               # hack to share shellHook with container
               (pkgs.writeScriptBin "setup-shell" shellHook)
             ];
