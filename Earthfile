@@ -6,7 +6,7 @@ hello:
     # using a patched vhs version to set no-sandbox go-rod option
     # could be replaced if https://github.com/charmbracelet/vhs/pull/195 is merged
     # maybe then also using the nix package works
-    FROM ghcr.io/charmbracelet/vhs:v0.2.1-devel
+    FROM ghcr.io/charmbracelet/vhs@sha256:018e10d9a61d7fe7e2fd76cfd3103211fc1a558d8c38d781bd2421fbe7230ac2
     RUN apt update && apt install -y cowsay
     # games is not part of PATH
     RUN mv /usr/games/cowsay /usr/local/bin
